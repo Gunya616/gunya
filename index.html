@@ -132,17 +132,31 @@ position: absolute;
             background-color: #FFB2C4; /* Цвет лепестков */
             border-radius: 50%;
             opacity: 0.7;
-            animation: fall linear infinite;
+            animation: float linear infinite;
             pointer-events: none; /* Лепестки не будут мешать взаимодействию с кнопками */
         }
 
-        @keyframes fall {
+        @keyframes float {
             0% {
-                transform: translateY(0) rotate(0deg);
+                transform: translateX(0) translateY(0);
             }
             100% {
-                transform: translateY(100vh) rotate(360deg);
+                transform: translateX(100vw) translateY(50vh);
             }
+        }
+
+        /* Стили для дерева сакуры */
+        .sakura-tree {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 200px;
+            height: 300px;
+            background-image: url('https://your-image-url.com/sakura-tree.png'); /* Замените URL на ваше изображение дерева сакуры */
+            background-size: cover;
+            background-position: center;
+            z-index: 0; /* Позади контейнера */
         }
     </style>
 </head>
@@ -150,6 +164,8 @@ position: absolute;
     <button class="theme-toggle" onclick="toggleTheme()" title="Сменить тему">
         <span id="theme-icon">🌙</span> <!-- Значок луны для темной темы -->
     </button>
+
+    <div class="sakura-tree"></div> <!-- Добавлено дерево сакуры -->
 
     <div class="container">
         <p>Добро пожаловать!</p>
@@ -179,8 +195,8 @@ position: absolute;
             const petal = document.createElement('div');
             petal.classList.add('petal');
             document.body.appendChild(petal);
-            petal.style.left = Math.random() * 100 + 'vw'; // Случайная позиция по горизонтали
-            petal.style.animationDuration = Math.random() * 3 + 2 + 's'; // Случайная скорость падения
+            petal.style.left = Math.random() * 200 + 'px'; // Позиция лепестка по горизонтали от 0 до 200px
+            petal.style.animationDuration = Math.random() * 2 + 3 + 's'; // Случайная скорость падения
             petal.style.opacity = Math.random(); // Случайная прозрачность
             petal.addEventListener('animationend', () => {
                 petal.remove(); // Удаляем лепесток после завершения анимации
@@ -209,8 +225,7 @@ position: absolute;
             
             localStorage.setItem('theme', newTheme);
         }
-
-        // Устанавливаем тему при загрузке страницы
+// Устанавливаем тему при загрузке страницы
         const savedTheme = localStorage.getItem('theme') || 'dark';
         document.body.classList.add(savedTheme);
 
@@ -219,7 +234,7 @@ position: absolute;
         container.style.backgroundColor = savedTheme === 'dark' ? '#1f1f1f' : '#f2e6d4';
 
         // Обновление иконки на основе сохраненной темы
-        document.getElementById('theme-icon').textContent = savedTheme === 'dark' ? '🌙' : '☀️';
+        document.getElementById('theme-icon').textContent = savedTheme === 'dark' ? '🌙' : '☀️'; 
     </script>
-
-    
+</body>
+</html>
