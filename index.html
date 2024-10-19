@@ -24,32 +24,11 @@
         }
 
         body.dark {
-            background: linear-gradient(145deg, #1a1e28, #2a2d34);
             color: #e0e0e0;
         }
 
         body.light {
-            background: linear-gradient(145deg, #e0f7fa, #b2ebf2);
             color: #333;
-        }
-
-        .dragon {
-            position: absolute;
-            bottom: 50px; /* Увеличьте отступ от низа */
-            left: 50%;
-            width: 100px;
-            height: 100px;
-            background-image: url('https://media.giphy.com/media/fyJkx2i6L4D1i/giphy.gif'); /* Замените на новое изображение дракончика */
-            background-size: contain;
-            background-repeat: no-repeat;
-            animation: jump 1s infinite;
-            transform: translateX(-50%);
-        }
-
-        @keyframes jump {
-            0% { transform: translate(-50%, 0); }
-            50% { transform: translate(-50%, -50px); }
-            100% { transform: translate(-50%, 0); }
         }
 
         .container {
@@ -102,6 +81,31 @@
         .discord { background-color: #7289da; }
         .icon { width: 28px; height: 28px; }
 
+        .theme-selector {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .color-option {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: border-color 0.3s;
+        }
+
+        .color-option:hover {
+            border-color: #fff;
+        }
+
+        .color-option.red { background-color: #ff4d4d; }
+        .color-option.green { background-color: #4dff4d; }
+        .color-option.blue { background-color: #4d4dff; }
+        .color-option.yellow { background-color: #ffff4d; }
+
         .theme-toggle {
             position: fixed;
             bottom: 20px;
@@ -138,8 +142,6 @@
     <button class="theme-toggle" onclick="toggleTheme()" title="Сменить тему">
         <span id="theme-icon">🌙</span>
     </button>
-
-    <div class="dragon"></div>
 <div class="container">
         <p>Добро пожаловать!</p>
         <p>Свяжитесь со мной:</p>
@@ -157,6 +159,13 @@
                 Discord
             </a>
         </div>
+
+        <div class="theme-selector">
+            <div class="color-option red" onclick="setThemeColor('#ff4d4d')"></div>
+            <div class="color-option green" onclick="setThemeColor('#4dff4d')"></div>
+            <div class="color-option blue" onclick="setThemeColor('#4d4dff')"></div>
+            <div class="color-option yellow" onclick="setThemeColor('#ffff4d')"></div>
+        </div>
     </div>
 
     <script>
@@ -164,16 +173,26 @@
             const body = document.body;
             const themeIcon = document.getElementById('theme-icon');
             const newTheme = body.classList.contains('dark') ? 'light' : 'dark';
-            body.className = newTheme;
+            body.classList.toggle('dark');
+            body.classList.toggle('light');
 
             // Изменение иконки в зависимости от темы
             themeIcon.textContent = newTheme === 'dark' ? '🌙' : '☀️';
             localStorage.setItem('theme', newTheme);
         }
 
-        // Устанавливаем тему при загрузке страницы
+        function setThemeColor(color) {
+            const body = document.body;
+            body.style.backgroundColor = color;
+            localStorage.setItem('themeColor', color);
+        }
+
+        // Устанавливаем тему и цвет при загрузке страницы
         const savedTheme = localStorage.getItem('theme') || 'dark';
-        document.body.className = savedTheme;
+        document.body.classList.add(savedTheme);
+
+        const savedColor = localStorage.getItem('themeColor') || '#ffffff';
+        document.body.style.backgroundColor = savedColor;
 
         // Обновление иконки на основе сохраненной темы
         document.getElementById('theme-icon').textContent = savedTheme === 'dark' ? '🌙' : '☀️';
