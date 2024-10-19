@@ -28,7 +28,7 @@
         }
 
         body.light {
-            background: linear-gradient(145deg, #f0f0f0, #e0e0e0);
+            background: linear-gradient(145deg, #a1c4fd, #c2e9fb);
             color: #333;
         }
 
@@ -83,16 +83,20 @@
         .icon { width: 28px; height: 28px; }
 
         .theme-toggle {
-            position: absolute;
-            top: 20px;
+            position: fixed;
+            bottom: 20px;
             right: 20px;
-            padding: 10px 20px;
+            width: 50px;
+            height: 50px;
             border: none;
-            border-radius: 20px;
+            border-radius: 50%;
             cursor: pointer;
             background-color: rgba(0, 0, 0, 0.2);
             color: #fff;
-            font-weight: 600;
+            font-size: 24px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
             transition: background 0.3s;
         }
 
@@ -111,7 +115,9 @@
     </style>
 </head>
 <body>
-    <button class="theme-toggle" onclick="toggleTheme()">Сменить тему</button>
+    <button class="theme-toggle" onclick="toggleTheme()" title="Сменить тему">
+        <span id="theme-icon">🌙</span>
+    </button>
 
     <div class="container">
         <p>Добро пожаловать!</p>
@@ -123,7 +129,7 @@
             </a>
             <a href="https://vk.com/fenec" class="badge vk">
                 <img src="https://cdn-icons-png.flaticon.com/512/145/145813.png" class="icon" alt="VK">
-                VK
+VK
             </a>
             <a href="https://discord.com/users/ваш_дискорд_профиль" class="badge discord">
                 <img src="https://cdn-icons-png.flaticon.com/512/2111/2111370.png" class="icon" alt="Discord">
@@ -131,17 +137,25 @@
             </a>
         </div>
     </div>
-<script>
+
+    <script>
         function toggleTheme() {
             const body = document.body;
+            const themeIcon = document.getElementById('theme-icon');
             const newTheme = body.classList.contains('dark') ? 'light' : 'dark';
             body.className = newTheme;
+
+            // Изменение иконки в зависимости от темы
+            themeIcon.textContent = newTheme === 'dark' ? '🌙' : '☀️';
             localStorage.setItem('theme', newTheme);
         }
 
         // Устанавливаем тему при загрузке страницы
         const savedTheme = localStorage.getItem('theme') || 'dark';
         document.body.className = savedTheme;
+
+        // Обновление иконки на основе сохраненной темы
+        document.getElementById('theme-icon').textContent = savedTheme === 'dark' ? '🌙' : '☀️';
     </script>
 </body>
 </html>
