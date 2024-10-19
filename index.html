@@ -3,57 +3,90 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Мой сайт на GitHub Pages</title>
+    <title>Мой персональный сайт</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;500&display=swap" rel="stylesheet">
     <style>
-        body {
-            background: linear-gradient(to top, #008000, #8a2be2);
+        * {
             margin: 0;
             padding: 0;
-            height: 100vh;
+            box-sizing: border-box;
+        }
+        body {
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            font-family: 'Roboto', sans-serif;
+            color: #fff;
             display: flex;
             justify-content: center;
             align-items: center;
-            font-family: Arial, sans-serif;
+            height: 100vh;
+            overflow: hidden;
         }
         .container {
             text-align: center;
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(10px);
+            animation: fadeIn 1s ease-in-out;
         }
-        .contacts {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            margin-top: 10px;
+        .container p {
+            margin-bottom: 15px;
+            font-size: 24px;
+            font-weight: 500;
         }
         .social-links {
             display: flex;
             justify-content: center;
-            gap: 10px;
-            margin-top: 10px;
+            gap: 20px;
+            margin-top: 20px;
         }
         .badge {
-            display: inline-block;
-            padding: 10px 20px;
-            background-color: #333;
-            color: #fff;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 24px;
+            border-radius: 30px;
             text-decoration: none;
-            font-size: 14px;
-            border-radius: 5px;
+            color: white;
+            font-weight: 500;
+            transition: transform 0.2s, box-shadow 0.2s;
         }
-        .badge.telegram { background-color: #0088cc; }
-        .badge.vk { background-color: #4c75a3; }
-        .badge.discord { background-color: #7289da; }
+        .badge:hover {
+            transform: scale(1.1);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+        }
+        .telegram { background-color: #0088cc; }
+        .vk { background-color: #4c75a3; }
+        .discord { background-color: #7289da; }
+
+        @keyframes fadeIn {
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+        .icon {
+            width: 24px;
+            height: 24px;
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <p>Добро пожаловать!</p>
-        <div class="contacts">
-            <p>Связь со мной:</p>
-        </div>
+        <p>Связь со мной:</p>
         <div class="social-links">
-            <a href="https://t.me/fenec01" class="badge telegram">Telegram</a>
-            <a href="https://vk.com/fenec" class="badge vk">VK</a>
-            <a href="https://discord.com/users/ваш_дискорд_профиль" class="badge discord">Discord</a>
+            <a href="https://t.me/fenec01" class="badge telegram">
+                <img src="https://cdn-icons-png.flaticon.com/512/2111/2111646.png" class="icon" alt="Telegram">
+                Telegram
+            </a>
+            <a href="https://vk.com/fenec" class="badge vk">
+                <img src="https://cdn-icons-png.flaticon.com/512/145/145813.png" class="icon" alt="VK">
+                VK
+            </a>
+            <a href="https://discord.com/users/ваш_дискорд_профиль" class="badge discord">
+                <img src="https://cdn-icons-png.flaticon.com/512/2111/2111370.png" class="icon" alt="Discord">
+                Discord
+            </a>
         </div>
     </div>
 </body>
