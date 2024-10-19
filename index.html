@@ -4,94 +4,57 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Мой сайт на GitHub Pages</title>
-</head>
-<body>
-    <p>Добро пожаловать !</p>
-    <p>Связь со мной :</p>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
-</body>
-</html>
-<!DOCTYPE html>
-<html>
-<head>
-    <title>My Social Media Links</title>
     <style>
+        body {
+            background: linear-gradient(to top, #008000, #8a2be2);
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            text-align: center;
+        }
+        .contacts {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 10px;
+        }
         .badge {
             display: inline-block;
-            margin: 10px;
             padding: 10px 20px;
             background-color: #333;
             color: #fff;
             text-decoration: none;
-            font-family: Arial, sans-serif;
             font-size: 14px;
             border-radius: 5px;
         }
+        .badge.telegram { background-color: #0088cc; }
+        .badge.vk { background-color: #4c75a3; }
+        .badge.discord { background-color: #7289da; }
     </style>
 </head>
 <body>
-    <a href="https://t.me/https://web.telegram.org/k/#@fenec01" class="badge" style="background-color: #0088cc;">Telegram</a>
-    <a href="https://vk.com/fenec" class="badge" style="background-color: #4c75a3;">VK</a>
-    <a href="https://discord.com/users/ваш_дискорд_профиль" class="badge" style="background-color: #7289da;">Discord</a>
+    <div class="container">
+        <p>Добро пожаловать!</p>
+        <div class="contacts">
+            <p>Связь со мной:</p>
+        </div>
+        <div class="social-links">
+            <a href="https://t.me/fenec01" class="badge telegram">Telegram</a>
+            <a href="https://vk.com/fenec" class="badge vk">VK</a>
+            <a href="https://discord.com/users/ваш_дискорд_профиль" class="badge discord">Discord</a>
+        </div>
+    </div>
 </body>
 </html>
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GitHub Pages Theme</title>
-</head>
-<body>
-    <div id="github-pages-content"></div>
-
-    <script>
-        fetch('https://api.github.com/repos/{owner}/{repo}/readme')
-            .then(response => response.json())
-            .then(data => {
-                document.getElementById('github-pages-content').innerHTML = atob(data.content);
-            })
-            .catch(error => console.error('Error:', error));
-    </script>
-</body>
-</html>
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Мой сайт на Гид Хабе</title>
-<style>
-body {
-    background: linear-gradient(to top, #008000, #8a2be2);
-    margin: 0;
-    padding: 0;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-</style>
-</head>
-<body>
-</body>
