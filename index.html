@@ -23,28 +23,28 @@
         }
 
         body.dark {
-            background: linear-gradient(145deg, #0f2027, #203a43, #2c5364);
-            color: #fff;
+            background: linear-gradient(145deg, #2a2d34, #3e434a);
+            color: #e0e0e0;
         }
 
         body.light {
-            background: linear-gradient(145deg, #a1c4fd, #c2e9fb);
+            background: linear-gradient(145deg, #e0f7fa, #b2ebf2);
             color: #333;
         }
 
         .container {
             text-align: center;
-            background: rgba(255, 255, 255, 0.07);
+            background: rgba(255, 255, 255, 0.1);
             padding: 50px;
             border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-            backdrop-filter: blur(12px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(10px);
             transition: transform 0.5s ease, box-shadow 0.5s;
         }
 
         .container:hover {
             transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
         }
 
         .container p {
@@ -73,13 +73,13 @@
         }
 
         .badge:hover {
-            transform: scale(1.15);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+            transform: scale(1.1);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
         }
 
-        .telegram { background-color: #229ED9; }
-        .vk { background-color: #5181B8; }
-        .discord { background-color: #5865F2; }
+        .telegram { background-color: #4db6e9; }
+        .vk { background-color: #6ab7c9; }
+        .discord { background-color: #7289da; }
         .icon { width: 28px; height: 28px; }
 
         .theme-toggle {
@@ -91,7 +91,7 @@
             border: none;
             border-radius: 50%;
             cursor: pointer;
-            background-color: rgba(0, 0, 0, 0.2);
+            background-color: rgba(0, 0, 0, 0.1);
             color: #fff;
             font-size: 24px;
             display: flex;
@@ -101,16 +101,16 @@
         }
 
         .theme-toggle:hover {
-            background-color: rgba(0, 0, 0, 0.4);
+            background-color: rgba(0, 0, 0, 0.2);
         }
 
         body.light .theme-toggle {
-            background-color: rgba(0, 0, 0, 0.1);
+            background-color: rgba(0, 0, 0, 0.05);
             color: #333;
         }
 
         body.light .theme-toggle:hover {
-            background-color: rgba(0, 0, 0, 0.2);
+            background-color: rgba(0, 0, 0, 0.1);
         }
     </style>
 </head>
