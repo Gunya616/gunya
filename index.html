@@ -20,9 +20,9 @@
             height: 100vh;
             overflow: hidden;
             position: relative;
-            transition: background 0.5s ease-in-out;
             background-color: #f2e6d4; /* Нежный цвет для светлой темы */
             color: #333333; /* Цвет текста для светлой темы (темно-серый) */
+            overflow: hidden;
         }
 
         body.dark {
@@ -38,6 +38,8 @@
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
             backdrop-filter: blur(10px);
             transition: transform 0.5s ease, box-shadow 0.5s;
+            position: relative; /* Для размещения лепестков */
+            z-index: 1; /* Поверх фона */
         }
 
         .container:hover {
@@ -118,6 +120,26 @@
         body.light .theme-toggle:hover {
             background-color: rgba(0, 0, 0, 0.1);
         }
+
+        /* Стили для лепестков сакуры */
+        .petal {
+            position: absolute;
+            width: 15px;
+            height: 15px;
+            background-color: #FFB2C4; /* Цвет лепестков */
+            border-radius: 50%;
+            opacity: 0.7;
+            animation: fall linear infinite;
+            pointer-events: none; /* Лепестки не будут мешать взаимодействию с кнопками */
+        }
+@keyframes fall {
+            0% {
+                transform: translateY(-10px) rotate(0deg);
+            }
+            100% {
+                transform: translateY(100vh) rotate(360deg);
+            }
+        }
     </style>
 </head>
 <body>
@@ -128,7 +150,8 @@
     <div class="container">
         <p>Добро пожаловать!</p>
         <div class="divider"></div> <!-- Разделитель -->
-<p>Связь со мной:</p> <!-- Измененный текст -->
+
+        <p>Связь со мной:</p> <!-- Измененный текст -->
         <div class="social-links">
             <a href="https://t.me/fenec01" class="badge telegram">
                 <img src="https://cdn-icons-png.flaticon.com/512/2111/2111646.png" class="icon" alt="Telegram">
@@ -146,7 +169,22 @@
         <div class="divider"></div> <!-- Разделитель -->
     </div>
 
+    <!-- Генерация лепестков сакуры -->
     <script>
+        const createPetal = () => {
+            const petal = document.createElement('div');
+            petal.classList.add('petal');
+            document.body.appendChild(petal);
+            petal.style.left = Math.random() * 100 + 'vw'; // Случайная позиция по горизонтали
+            petal.style.animationDuration = Math.random() * 3 + 2 + 's'; // Случайная скорость падения
+            petal.style.opacity = Math.random(); // Случайная прозрачность
+            petal.addEventListener('animationend', () => {
+                petal.remove(); // Удаляем лепесток после завершения анимации
+            });
+        };
+
+        setInterval(createPetal, 300); // Создаём лепесток каждые 300 мс
+
         function toggleTheme() {
             const body = document.body;
             const themeIcon = document.getElementById('theme-icon');
