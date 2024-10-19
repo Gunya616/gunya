@@ -20,9 +20,8 @@
             height: 100vh;
             overflow: hidden;
             position: relative;
-            background-color: #f2e6d4; /* Нежный цвет для фона */
+            background-color: #f2e6d4; /* Нежный цвет для светлого фона */
             color: #333333; /* Цвет текста для светлой темы (темно-серый) */
-            overflow: hidden;
         }
 
         body.dark {
@@ -32,14 +31,18 @@
 
         .container {
             text-align: center;
-            background: #f2e6d4; /* Цвет такой же как фон */
             padding: 50px;
             border-radius: 20px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
             backdrop-filter: blur(10px);
-            transition: transform 0.5s ease, box-shadow 0.5s;
+            transition: transform 0.5s ease, box-shadow 0.5s, background-color 0.5s;
             position: relative; /* Для размещения лепестков */
             z-index: 1; /* Поверх фона */
+            background-color: #f2e6d4; /* Цвет контейнера по умолчанию (светлый) */
+        }
+
+        body.dark .container {
+            background-color: #1f1f1f; /* Цвет контейнера для темной темы */
         }
 
         .container:hover {
@@ -123,7 +126,7 @@
 
         /* Стили для лепестков сакуры */
         .petal {
-            position: absolute;
+position: absolute;
             width: 15px;
             height: 15px;
             background-color: #FFB2C4; /* Цвет лепестков */
@@ -132,9 +135,10 @@
             animation: fall linear infinite;
             pointer-events: none; /* Лепестки не будут мешать взаимодействию с кнопками */
         }
-@keyframes fall {
+
+        @keyframes fall {
             0% {
-                transform: translateY(-10px) rotate(0deg);
+                transform: translateY(0) rotate(0deg);
             }
             100% {
                 transform: translateY(100vh) rotate(360deg);
@@ -194,6 +198,15 @@
 
             // Изменение иконки в зависимости от темы
             themeIcon.textContent = newTheme === 'dark' ? '🌙' : '☀️'; // Значок для переключения
+            
+            // Изменение цвета контейнера в зависимости от темы
+            const container = document.querySelector('.container');
+            if (newTheme === 'dark') {
+                container.style.backgroundColor = '#1f1f1f'; // Темный цвет для контейнера
+            } else {
+                container.style.backgroundColor = '#f2e6d4'; // Светлый цвет для контейнера
+            }
+            
             localStorage.setItem('theme', newTheme);
         }
 
@@ -201,8 +214,12 @@
         const savedTheme = localStorage.getItem('theme') || 'dark';
         document.body.classList.add(savedTheme);
 
+        // Устанавливаем цвет контейнера при загрузке страницы
+        const container = document.querySelector('.container');
+        container.style.backgroundColor = savedTheme === 'dark' ? '#1f1f1f' : '#f2e6d4';
+
         // Обновление иконки на основе сохраненной темы
         document.getElementById('theme-icon').textContent = savedTheme === 'dark' ? '🌙' : '☀️';
     </script>
-</body>
-</html>
+
+    
