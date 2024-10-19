@@ -21,8 +21,8 @@
             overflow: hidden;
             position: relative;
             transition: background 0.5s ease-in-out;
-            background-color: #FFC107; /* Атнуражный цвет для светлой темы */
-            color: #ffffff; /* Цвет текста для светлой темы (белый) */
+            background-color: #f2e6d4; /* Нежный цвет для светлой темы */
+            color: #333333; /* Цвет текста для светлой темы (темно-серый) */
         }
 
         body.dark {
@@ -32,7 +32,7 @@
 
         .container {
             text-align: center;
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.8); /* Белый с прозрачностью */
             padding: 50px;
             border-radius: 20px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
@@ -54,7 +54,7 @@
         .divider {
             width: 50%;
             height: 2px;
-            background-color: rgba(255, 255, 255, 0.3);
+            background-color: rgba(0, 0, 0, 0.1);
             margin: 20px auto;
             transition: width 0.5s;
         }
@@ -112,7 +112,7 @@
 
         body.light .theme-toggle {
             background-color: rgba(0, 0, 0, 0.05);
-            color: #FFC107; /* Цвет текста для светлой темы */
+            color: #f2e6d4; /* Цвет текста для светлой темы */
         }
 
         body.light .theme-toggle:hover {
