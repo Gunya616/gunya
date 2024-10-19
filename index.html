@@ -21,14 +21,13 @@
             overflow: hidden;
             position: relative;
             transition: background 0.5s ease-in-out;
+            background-color: #ffffff; /* Цвет для светлой темы */
+            color: #333; /* Цвет текста для светлой темы */
         }
 
         body.dark {
-            color: #e0e0e0;
-        }
-
-        body.light {
-            color: #333;
+            background-color: #121212; /* Цвет для темной темы */
+            color: #e0e0e0; /* Цвет текста для темной темы */
         }
 
         .container {
@@ -81,31 +80,6 @@
         .discord { background-color: #7289da; }
         .icon { width: 28px; height: 28px; }
 
-        .theme-selector {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin-top: 20px;
-        }
-
-        .color-option {
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;
-            cursor: pointer;
-            border: 2px solid transparent;
-            transition: border-color 0.3s;
-        }
-
-        .color-option:hover {
-            border-color: #fff;
-        }
-
-        .color-option.red { background-color: #ff4d4d; }
-        .color-option.green { background-color: #4dff4d; }
-        .color-option.blue { background-color: #4d4dff; }
-        .color-option.yellow { background-color: #ffff4d; }
-
         .theme-toggle {
             position: fixed;
             bottom: 20px;
@@ -140,9 +114,10 @@
 </head>
 <body>
     <button class="theme-toggle" onclick="toggleTheme()" title="Сменить тему">
-        <span id="theme-icon">🌙</span>
+        <span id="theme-icon">⚪</span> <!-- Минималистичный значок -->
     </button>
-<div class="container">
+
+    <div class="container">
         <p>Добро пожаловать!</p>
         <p>Свяжитесь со мной:</p>
         <div class="social-links">
@@ -151,20 +126,13 @@
                 Telegram
             </a>
             <a href="https://vk.com/fenec" class="badge vk">
-                <img src="https://cdn-icons-png.flaticon.com/512/145/145813.png" class="icon" alt="VK">
+<img src="https://cdn-icons-png.flaticon.com/512/145/145813.png" class="icon" alt="VK">
                 VK
             </a>
             <a href="https://discord.com/users/ваш_дискорд_профиль" class="badge discord">
                 <img src="https://cdn-icons-png.flaticon.com/512/2111/2111370.png" class="icon" alt="Discord">
                 Discord
             </a>
-        </div>
-
-        <div class="theme-selector">
-            <div class="color-option red" onclick="setThemeColor('#ff4d4d')"></div>
-            <div class="color-option green" onclick="setThemeColor('#4dff4d')"></div>
-            <div class="color-option blue" onclick="setThemeColor('#4d4dff')"></div>
-            <div class="color-option yellow" onclick="setThemeColor('#ffff4d')"></div>
         </div>
     </div>
 
@@ -177,25 +145,16 @@
             body.classList.toggle('light');
 
             // Изменение иконки в зависимости от темы
-            themeIcon.textContent = newTheme === 'dark' ? '🌙' : '☀️';
+            themeIcon.textContent = newTheme === 'dark' ? '⚪' : '⚫'; // Минималистичный значок
             localStorage.setItem('theme', newTheme);
         }
 
-        function setThemeColor(color) {
-            const body = document.body;
-            body.style.backgroundColor = color;
-            localStorage.setItem('themeColor', color);
-        }
-
-        // Устанавливаем тему и цвет при загрузке страницы
+        // Устанавливаем тему при загрузке страницы
         const savedTheme = localStorage.getItem('theme') || 'dark';
         document.body.classList.add(savedTheme);
 
-        const savedColor = localStorage.getItem('themeColor') || '#ffffff';
-        document.body.style.backgroundColor = savedColor;
-
         // Обновление иконки на основе сохраненной темы
-        document.getElementById('theme-icon').textContent = savedTheme === 'dark' ? '🌙' : '☀️';
+        document.getElementById('theme-icon').textContent = savedTheme === 'dark' ? '⚪' : '⚫';
     </script>
 </body>
 </html>
