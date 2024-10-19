@@ -21,13 +21,13 @@
             overflow: hidden;
             position: relative;
             transition: background 0.5s ease-in-out;
-            background-color: #ffffff; /* Цвет для светлой темы */
-            color: #333; /* Цвет текста для светлой темы */
+            background-color: #e0f7fa; /* Цвет для светлой темы (светло-голубой) */
+            color: #003f4f; /* Цвет текста для светлой темы (темно-синий) */
         }
 
         body.dark {
-            background-color: #121212; /* Цвет для темной темы */
-            color: #e0e0e0; /* Цвет текста для темной темы */
+            background-color: #0d1b2a; /* Цвет для темной темы (темный синий) */
+            color: #ffffff; /* Цвет текста для темной темы (белый) */
         }
 
         .container {
@@ -75,9 +75,9 @@
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
         }
 
-        .telegram { background-color: #4db6e9; }
-        .vk { background-color: #6ab7c9; }
-        .discord { background-color: #7289da; }
+        .telegram { background-color: #00796b; }
+        .vk { background-color: #0077c2; }
+        .discord { background-color: #673ab7; }
         .icon { width: 28px; height: 28px; }
 
         .theme-toggle {
@@ -104,7 +104,7 @@
 
         body.light .theme-toggle {
             background-color: rgba(0, 0, 0, 0.05);
-            color: #333;
+            color: #003f4f; /* Цвет текста для светлой темы */
         }
 
         body.light .theme-toggle:hover {
@@ -114,7 +114,7 @@
 </head>
 <body>
     <button class="theme-toggle" onclick="toggleTheme()" title="Сменить тему">
-        <span id="theme-icon">⚪</span> <!-- Минималистичный значок -->
+        <span id="theme-icon">🌙</span> <!-- Значок луны для темной темы -->
     </button>
 
     <div class="container">
@@ -123,10 +123,10 @@
         <div class="social-links">
             <a href="https://t.me/fenec01" class="badge telegram">
                 <img src="https://cdn-icons-png.flaticon.com/512/2111/2111646.png" class="icon" alt="Telegram">
-                Telegram
+Telegram
             </a>
             <a href="https://vk.com/fenec" class="badge vk">
-<img src="https://cdn-icons-png.flaticon.com/512/145/145813.png" class="icon" alt="VK">
+                <img src="https://cdn-icons-png.flaticon.com/512/145/145813.png" class="icon" alt="VK">
                 VK
             </a>
             <a href="https://discord.com/users/ваш_дискорд_профиль" class="badge discord">
@@ -145,7 +145,7 @@
             body.classList.toggle('light');
 
             // Изменение иконки в зависимости от темы
-            themeIcon.textContent = newTheme === 'dark' ? '⚪' : '⚫'; // Минималистичный значок
+            themeIcon.textContent = newTheme === 'dark' ? '🌙' : '☀️'; // Значок для переключения
             localStorage.setItem('theme', newTheme);
         }
 
@@ -154,7 +154,7 @@
         document.body.classList.add(savedTheme);
 
         // Обновление иконки на основе сохраненной темы
-        document.getElementById('theme-icon').textContent = savedTheme === 'dark' ? '⚪' : '⚫';
+        document.getElementById('theme-icon').textContent = savedTheme === 'dark' ? '🌙' : '☀️';
     </script>
 </body>
 </html>
